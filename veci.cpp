@@ -16,11 +16,11 @@ int main(){
         x /= 10;
     }
     
-    for(auto digit : digits) {
+    /*for(auto digit : digits) {
         cout << digit << " " << endl;
          adigit.insert(digit);   
     }
-
+    */
     
        
 
