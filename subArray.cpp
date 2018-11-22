@@ -10,17 +10,17 @@
 using namespace std;
 
 
-int maxSubArray3(int a[],int n)	{	//Overall Time Complexity O(n^3)
+int maxSubArray3(int a[],int n)	{	//O(n^3)
 
-	int ans = INT_MIN;							// #include<climits>
-	for(int sub_array_size = 1;sub_array_size <= n; ++sub_array_size)		//O(n)
+	int ans = INT_MIN;							
+	for(int sub_array_size = 1;sub_array_size <= n; ++sub_array_size)		
 	{
-		for(int start_index = 0;start_index < n; ++start_index)				//O(n)
+		for(int start_index = 0;start_index < n; ++start_index)				
 		{
-			if(start_index+sub_array_size > n)	//Subarray exceeds array bounds
+			if(start_index+sub_array_size > n)	
 				break;
 			int sum = 0;
-			for(int i = start_index; i < (start_index+sub_array_size); i++)	//O(n)
+			for(int i = start_index; i < (start_index+sub_array_size); i++)
 				sum+= a[i];
 			ans = max(ans,sum);
 		}
@@ -30,27 +30,27 @@ int maxSubArray3(int a[],int n)	{	//Overall Time Complexity O(n^3)
 
 
 
-int maxSubArray2(int a[],int n){	//Overall Time Complexity O(n^2)
+int maxSubArray2(int a[],int n){	// O(n^2)
 
 	int ans = INT_MIN;
-	for(int start_index = 0;start_index < n; ++start_index)					//O(n)		
+	for(int start_index = 0;start_index < n; ++start_index)							
 	{
 		int sum = 0;
-		for(int sub_array_size = 1;sub_array_size <= n; ++sub_array_size)	//O(n)	
+		for(int sub_array_size = 1;sub_array_size <= n; ++sub_array_size)		
 		{
-			if(start_index+sub_array_size > n)	//Subarray exceeds array bounds
+			if(start_index+sub_array_size > n)	
 				break;
-			sum+= a[start_index + sub_array_size - 1];	//Last element of the new Subarray
+			sum+= a[start_index + sub_array_size - 1];	
 			ans = max(ans,sum);
 		}
 	}
 	return ans;
 }
 
-int maxSubArrayN(int a[],int n){	//Overall Time Complexity O(n)
+int maxSubArrayN(int a[],int n){	// O(n)
 
 	int ans = a[0],sum = 0;
-	for(int i = 1;i < n; ++i)	//Check if all are negative
+	for(int i = 1;i < n; ++i)	
 		ans = max(ans,a[i]);	
 	if(ans<0)					//if Max < 0 return Max
 		return ans;
