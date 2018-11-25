@@ -27,7 +27,7 @@ int max_sub1(int a[], int n) {
   return max;
 }
 
-//O(n^3)
+//O(n^2)
 int max_sub2(int a[],int n){
     int ans = INT_MIN;
     for(int i = 0;i < n;i++){
@@ -49,7 +49,7 @@ int max_sub3(int a[],int n){	// O(n)
 	int ans = a[0],sum = 0;
 	for(int i = 1;i < n; ++i)	
 		ans = max(ans,a[i]);	
-	if(ans<0)					//if Max < 0 return Max
+	if(ans<0)				
 		return ans;
 	ans = 0;
 	for(int i = 0 ;i < n; ++i)
@@ -94,20 +94,6 @@ int max_sub4(int a[],int n)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main() {
   random_device device;
   mt19937 generator(device());
@@ -118,6 +104,7 @@ int main() {
     a[i] = distribution(generator);
   }
   cout << "max subarray of " << N << " values" << endl;
+ 
   auto t1 = high_resolution_clock::now(); 
   cout << "O(n^3):   " << max_sub1(a, N) << endl;
   auto t2 = high_resolution_clock::now();
@@ -133,14 +120,14 @@ int main() {
   
 
   auto t5 = high_resolution_clock::now(); 
-  cout << "O(n):   " << max_sub3(a, N) << endl;
+  cout << "O(n):   " << max_sub4(a, N) << endl;
   auto t6 = high_resolution_clock::now();
   auto duration3 = duration_cast<microseconds>(t6-t5).count();
   cout << "Time elapsed: " << duration3 << " microseconds " << duration3/1000000.0 << " seconds" << endl;
 
 
   auto t7 = high_resolution_clock::now(); 
-  cout << "O(nlogN):   " << max_sub4(a, N) << endl;
+  cout << "O(nlogN):   " << max_sub3(a, N) << endl;
   auto t8 = high_resolution_clock::now();
   auto duration4 = duration_cast<microseconds>(t8-t7).count();
   cout << "Time elapsed: " << duration4 << " microseconds " << duration4/1000000.0 << " seconds" << endl;
