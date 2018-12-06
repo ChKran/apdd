@@ -8,7 +8,7 @@ struct node
   int data;
   node *next;
 };
-
+node* head;
 class mylist
 {
 private:
@@ -22,7 +22,8 @@ public:
   void print_list();
   void reverse();
   void Delete(int n);
-  void inesert_at_position(int,int);  
+  void inesert_at_position(int,int);
+  void Delete_at_position(int n);  
 };
 
 mylist::mylist()
@@ -96,14 +97,21 @@ void mylist::inesert_at_position(int data,int n){
   temp2->next = temp1;
 }
 
-void mylist::Delete(int n){
-  node* temp = head;
-
-
-
+//delete at position
+void mylist::Delete_at_position(int n) {
+  node* temp1 = head;
+  if(n==1){
+    head = temp1->next;
+    free(temp1);
+  }
+  int i;
+  for(int i=0;i<n-2;i++)
+    temp1 = temp1->next;
+  
+  node* temp2 = temp1->next;
+  temp1->next = temp2->next;
+  free(temp2);
 }
-
-
 
 
 
@@ -163,6 +171,11 @@ int main()
   alist.inesert_at_position(1,1);
   alist.print_list();
   cout<<endl;
+
+  alist.Delete_at_position(2);
+  alist.print_list();
+  cout<<endl;
+  
   
 
   
