@@ -21,9 +21,9 @@ public:
   void push_back(int);
   void print_list();
   void reverse();
-  void Delete(int n);
   void inesert_at_position(int,int);
   void Delete_at_position(int n);  
+  void bubbleSort();
 };
 
 mylist::mylist()
@@ -134,6 +134,46 @@ void mylist::reverse(){
 }//end reverse
 
 
+//bubblesort
+void mylist::bubbleSort(){
+  int count = 0, i;
+  node *start = head;
+  node *curr = NULL;
+  node *trail = NULL;
+  node *temp = NULL;
+
+  while(start != NULL) { 
+    count++;
+    start = start->next;
+  }
+
+  for(i = 0; i<count; ++i) {
+
+    curr = trail = head; 
+
+    while (curr->next != NULL) { 
+      if (curr->data > curr->next->data) { 
+
+        temp = curr->next; 
+        curr->next = curr->next->next;
+        temp->next = curr;
+
+        
+        if(curr == head) 
+          head = trail = temp;
+        else 
+          trail->next = temp;
+        curr = temp; 
+      }
+
+      trail = curr;
+      curr = curr->next;
+    }
+  }
+
+}
+
+
 void mylist::print_list()
 {
   node *temp = head;
@@ -156,6 +196,7 @@ int main()
   cout<<endl;
   cout<<endl;
 
+
   vector<int> t ={1,2,3};
   mylist tlist;
   for(int y : t)
@@ -164,6 +205,7 @@ int main()
 
   cout<<endl;
   cout<<endl;
+  
   alist.reverse();
   alist.print_list();
   cout<<endl;
@@ -176,6 +218,9 @@ int main()
   alist.print_list();
   cout<<endl;
   
+
+  alist.bubbleSort();
+  alist.print_list();
   
 
   
