@@ -45,7 +45,7 @@ int main(){
     cout<<"Elapsed time "<<(t2-t1).count() / 1E9 << endl;
 
 
-/*
+
 
     //set
     auto t3 = high_resolution_clock::now();
@@ -77,7 +77,7 @@ int main(){
     cout<<"Elapsed time "<<(t4-t3).count() / 1E9 << endl;
     
 
-*/
+
 
 
 
